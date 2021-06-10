@@ -41,7 +41,6 @@ public class ED_Lista{
 
         //Validaciones para la lista de la primera posición
         if (lista[0] != null) {
-
             //Posicionando el elemento
             lista_2[lista_2.length - 1] = nodo;
             lista = lista_2;

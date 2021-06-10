@@ -30,13 +30,15 @@ public class Ejercicio_21 {
             System.out.println("Lista 1 ["+i+"]");
             String valor = in.next();
             
+            dato.setDato(valor);
+            primeraLista.agregar(dato);
+            
             //VALIDACIÓN DE PROGRAMA
-            System.out.println("QUIERES ACABAR LA LISTA? INGRESE n: ");
+            System.out.println("QUIERES ACABAR LA LISTA? INGRESE [s/n]: ");
             String op = in.next();
-            if (op.charAt(0) == 'n') {
+            if (op.charAt(0) == 's') {
                 ciclo = false;
             }else{
-                primeraLista.agregar(dato);
                 i++;
             }
         } while (ciclo);
@@ -55,10 +57,11 @@ public class Ejercicio_21 {
             //VALIDACIÓN DE PROGRAMA
             System.out.println("QUIERE MAS VAYA A BELLSOUTH? [s/n]: ");
             String op = in.next();
+            dato.setDato(valor);
+            segundaLista.agregar(dato);
             if (op.charAt(0) == 'n') {
                 ciclo = false;
             }else{
-                segundaLista.agregar(dato);
                 i++;
             }
         } while (ciclo);
