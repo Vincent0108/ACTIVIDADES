@@ -59,6 +59,7 @@ public class Ejercicio_21 {
             String op = in.next();
             dato.setDato(valor);
             segundaLista.agregar(dato);
+            
             if (op.charAt(0) == 'n') {
                 ciclo = false;
             }else{
@@ -71,13 +72,13 @@ public class Ejercicio_21 {
         listaCombinada.invertirLista(segundaLista, listaCombinada, segundaLista.getLista().length-1);
        //Primera lista
         System.out.println("PRIMERA LISTA");
-        System.out.println(primeraLista.imprimir());
+        primeraLista.imprimir();
         //Segunda lista
         System.out.println("SEGUNDA LISTA");
-        System.out.println(segundaLista.imprimir());
+        segundaLista.imprimir();
         //Lista combinada
         System.out.println("LISTAS COMBINADAS");
-        System.out.println(listaCombinada.imprimir());
+        listaCombinada.imprimir();
     }
 
 }
