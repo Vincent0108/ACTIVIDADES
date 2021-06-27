@@ -195,6 +195,7 @@ class ArbolCadena {
     public void insertar(String dato) {
         if (this.raiz == null) {
             this.raiz = new NodoCadena(dato);
+            System.out.println("NODO RAIZ = "+dato);
         } else {
             this.insertar(this.raiz, dato);
         }
@@ -204,14 +205,18 @@ class ArbolCadena {
         if (dato.compareTo(padre.getDato()) > 0) {
             if (padre.getDerecha() == null) {
                 padre.setDerecha(new NodoCadena(dato));
+                System.out.println("NODO DERECHO = "+dato);
             } else {
                 this.insertar(padre.getDerecha(), dato);
+                System.out.println("NODO DERECHO = "+dato);
             }
         } else {
             if (padre.getIzquierda() == null) {
                 padre.setIzquierda(new NodoCadena(dato));
+                System.out.println("NODO IZQUIERDO = "+dato);
             } else {
                 this.insertar(padre.getIzquierda(), dato);
+                System.out.println("NODO IZQUIERDO = "+dato);
             }
         }
     }
@@ -251,6 +256,16 @@ class ArbolCadena {
     public void postorden() {
         this.postorden(this.raiz);
     }
+
+    public NodoCadena getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(NodoCadena raiz) {
+        this.raiz = raiz;
+    }
+    
+    
 }
 
 class Main {
@@ -279,16 +294,22 @@ class Main {
         ArbolCadena arbol2 = new ArbolCadena();
         arbol2.insertar("K");
         arbol2.insertar("B");
+        arbol2.insertar("W");
         arbol2.insertar("A");
         arbol2.insertar("F");
         arbol2.insertar("D");
-        arbol2.insertar("W");
+        
         arbol2.insertar("M");
+        arbol2.insertar("Z");
         arbol2.insertar("L");
         arbol2.insertar("O");
         arbol2.insertar("P");
-        arbol2.insertar("Z");
-
+        
+        
+        System.out.println("*********");
+        System.out.println("NODO = "+arbol2.getRaiz().getDerecha().getIzquierda().getDerecha().getDerecha().getDato());
+        
+        
         System.out.println("Recorriendo inorden:");
         arbol2.inorden();
         System.out.println("Recorriendo postorden:");
