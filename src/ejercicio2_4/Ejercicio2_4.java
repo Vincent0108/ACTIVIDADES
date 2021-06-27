@@ -1,9 +1,12 @@
 package ejercicio2_4;
 
+import java.util.ArrayList;
+
 class Nodo {
 
     private int dato;
     private Nodo izquierda, derecha;
+    
 
     public Nodo(int dato) {
         this.dato = dato;
@@ -38,9 +41,33 @@ class Nodo {
 class Arbol {
 
     private Nodo raiz;
+    private int cantidadNodos;
+    private ArrayList<Integer> datos;
+    
+    public int cuentaNodos(Nodo nodo) {
+
+        int contador = 1;
+        if (nodo.getIzquierda() != null) {
+            contador += cuentaNodos(nodo.getIzquierda());
+        }
+
+        if (nodo.getDerecha() != null) {
+            contador += cuentaNodos(nodo.getDerecha());
+        }
+        
+        return contador;
+    }
+    
+    public Nodo getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(Nodo raiz) {
+        this.raiz = raiz;
+    }
 
     public Arbol() {
-
+        datos = new ArrayList<>();
     }
 
     public boolean existe(int busqueda) {
@@ -67,6 +94,8 @@ class Arbol {
         } else {
             this.insertar(this.raiz, dato);
         }
+        cantidadNodos++;
+        datos.add(dato);
     }
 
     private void insertar(Nodo padre, int dato) {
@@ -120,6 +149,29 @@ class Arbol {
     public void postorden() {
         this.postorden(this.raiz);
     }
+
+    public int buscarMayor() {
+
+        int mayor = raiz.getDato();
+        Nodo nodo = raiz;
+        while (nodo.getDerecha() != null) {
+            nodo = nodo.getDerecha();
+            mayor = nodo.getDato();
+        }
+        return mayor;
+    }
+    
+    public int promedio() {
+        int suma = 0;
+        
+        for (int i = 0; i < datos.size(); i++) {
+            suma += datos.get(i);
+            System.out.println("DATO "+i+" = "+datos.get(i));
+        }
+
+        return suma/datos.size();
+    }
+
 }
 
 public class Ejercicio2_4 {
@@ -127,28 +179,29 @@ public class Ejercicio2_4 {
     public static void main(String[] args) {
 
         Arbol arbol = new Arbol();
+
         arbol.insertar(8);
         arbol.insertar(4);
         arbol.insertar(10);
         arbol.insertar(12);
         arbol.insertar(1);
-        arbol.insertar(0);
         arbol.insertar(2);
         arbol.insertar(9);
         arbol.insertar(20);
         arbol.insertar(30);
-        arbol.insertar(14);
+        arbol.insertar(18);
         arbol.insertar(16);
         arbol.insertar(15);
-        arbol.insertar(13);
+        arbol.insertar(100);
+
+        System.out.println(arbol.cuentaNodos(arbol.getRaiz()));
+        int mayor = arbol.buscarMayor();
+        System.out.println(mayor);
+        
+        System.out.println("Promedio = "+arbol.promedio());
 
     }
-    public static int cuantaNodos(Arbol arbol, Nodo nodo){
+
     
-    
-       
-    
-    return 0;
-    }
 
 }
